@@ -1,1 +1,1 @@
-~/.cabal/bin/pandoc -t beamer INTRODUCTION.md -o content.tex && xelatex presentation.tex
+~/.cabal/bin/pandoc -t beamer INTRODUCTION.md -o content.tex -i && xelatex presentation.tex
