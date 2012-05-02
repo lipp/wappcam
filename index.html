@@ -15,6 +15,7 @@
       }
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/nouislider.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -24,6 +25,50 @@
 
   <body>
     <div class="container">
+      <div class="row">
+        <div id="settingsPane" class="span4">
+          <form>
+            <label>Gain</label>
+            <div id="gainslider" class="sliderbar"></div>
+            <label>Shutter</label>
+            <div id="shutterslider" class="sliderbar"></div>        
+          </form>
+        </div>   <!-- /settingsPane -->         
+        <div id="cameraPane" class="span8">
+          <div class="row">
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span8"></img>            
+          </div>
+          <div class="row">
+            <div id="cameraControl" class="span8">
+              <div class="row">
+                <button class="span2">Start</button>
+                <button class="span2">Stop</button>
+                <button class="span2">Pause</button>
+                <button class="span2">Single</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /cameraPane -->    
+      </div>
+      <div class="row">
+        <div id="imageHistory" class="span12">
+          <div class="row">
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
+                 class="span2"></img>
+          </div>
+        </div> <!-- /imageHistory -->    
+      </div>
     </div> <!-- /container -->
 
     <!-- Le javascript
@@ -31,5 +76,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.nouislider.js"></script>
+    <script src="js/wappcam.js"></script>
   </body>
 </html>
