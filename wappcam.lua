@@ -74,8 +74,8 @@ local make_fake_image = 						-- Fakebild kreieren
     print(options.gain)
     print(options.brightness)
     
-    local src = cv.LoadImage('static/'..(imagename or 'testa')..'.jpg')	-- fakebild laden
-    local noise = cv.LoadImage('static/noise.jpg')			-- fakerauschen laden
+    local src = cv.LoadImage('fake/'..(imagename or 'testa')..'.jpg')	-- fakebild laden
+    local noise = cv.LoadImage('fake/noise.jpg')			-- fakerauschen laden
 
     local gamma = 2*(options.brightness-50)				-- shutter anpassung
     local Alpha = 1-(options.gain/100)
