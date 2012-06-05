@@ -7,15 +7,26 @@ var shutter = 50;
 var brightness = 50;
 var contrast = 50;
 var saturation = 50;
-var i = 0;
+var j = 0;
+var result = $.get('image');
+var format = "jpg";
 
 var update_image = function() {
-  var img_url = "/image?gain="+Math.floor(gain)+"&shutter="+Math.floor(shutter)+"&brightness="+Math.floor(brightness)+
-	      "&contrast="+Math.floor(contrast)+"&saturation="+Math.floor(saturation)+"&i="+i+1;  
+  j=j+1;
+  img_url = "/image?gain="+Math.floor(gain)+"&shutter="+Math.floor(shutter)+"&brightness="+Math.floor(brightness)+
+	      "&contrast="+Math.floor(contrast)+"&saturation="+Math.floor(saturation)+"&format="+format+"&j="+j;  
   $('#cameraImage').attr("src",img_url);	
 }
    
+ update_image();
 
+    $("#format").change(function(){
+     format = $(this).val();
+     console.log(format);
+     update_image();
+});
+
+      
 
     $("#gainslider").noUiSlider("init",{
         dontActivate: "lower", startMax: gain,
@@ -74,7 +85,29 @@ var i=0;
 
 $("#single").click(function(){
 
-   
+if(result.statusText == "Ok" ) {
+ console.log('resource exists');
+j=j+1;
+var newpic="/image?gain="+Math.floor(gain)+"&shutter="+Math.floor(shutter)+"&brightness="+Math.floor(brightness)+
+	      "&contrast="+Math.floor(contrast)+"&saturation="+Math.floor(saturation)+"&format="+format+"&j="+j;
+picsrc.unshift(newpic);
+picsrc.pop();
+
+$("#cameraImage").attr("src",picsrc[0]);
+$("#cameraImage1").attr("src",picsrc[1]);
+$("#cameraImage2").attr("src",picsrc[2]);
+$("#cameraImage3").attr("src",picsrc[3]);
+$("#cameraImage4").attr("src",picsrc[4]);
+$("#cameraImage5").attr("src",picsrc[5]);
+$("#cameraImage6").attr("src",picsrc[6]);
+
+
+
+}
+else {
+console.log('resource does not exist');
+
+  
 i=i+1;
 var newpic=testpics[i%7];
 picsrc.unshift(newpic);
@@ -88,13 +121,22 @@ $("#cameraImage4").attr("src",picsrc[4]);
 $("#cameraImage5").attr("src",picsrc[5]);
 $("#cameraImage6").attr("src",picsrc[6]);
 
+}
 });
 
 var clicked = false;
 var i=0;
 
 var start = function(){
-   i = i+1 
+
+if( result.statusText == "Ok" ) {
+ console.log('resource exists');
+ update_image();
+}
+else {
+console.log('resource does not exist');
+
+  i = i+1 
   var newpic=testpics[i%7];
   picsrc.unshift(newpic);
   picsrc.pop();
@@ -106,20 +148,29 @@ var start = function(){
   $("#cameraImage4").attr("src",picsrc[4]);
   $("#cameraImage5").attr("src",picsrc[5]);
   $("#cameraImage6").attr("src",picsrc[6]);
-
+}
 };
+
 
 var t = 0;
 
    $('#sequence').click(function(){
      clicked = !clicked;
      if (clicked){
-     t = setInterval(start, 200);
+     t = setInterval(start, 100);
      } else {
      clearInterval(t);
      }
      });   
 
 });
+
+/*var result = $.get('image')
+if( result.readyState == 1 ) {
+ console.log('resource exists');
+}
+else {
+console.log('resource does not exist');
+}*/
 
 
