@@ -1,0 +1,80 @@
+Index: src/lua_highgui.cpp
+===================================================================
+--- src/lua_highgui.cpp	(revision 62)
++++ src/lua_highgui.cpp	(working copy)
+@@ -181,6 +181,35 @@
+   return 1;
+ }
+ 
++static int luacv_cvEncodeImage(lua_State *L)
++{
++  const char f_msg[]=CVMAT_NAME" EncodeImage(string ext, "CVARR_NAME" image, int[] params)";
++  const int top=lua_gettop(L);
++  int *params=NULL,len=0,t_params[LUAI_MAXVARS];
++  switch(top)
++  {
++    case 2:
++            break;
++    case 3:
++            if ((lua_istable(L,3))&&((len=lua_objlen(L,3))!=0))
++            {
++              for(int i=1;i<=len;i++)
++              {
++                lua_rawgeti(L,3,i);      
++                t_params[i-1]=checkint(L,top+1);
++                lua_pop(L,1);
++              }
++              params=(int *)&t_params;
++              break;
++            }
++    default:
++            luaL_error(L,f_msg);
++  }
++
++  pushCvMat(L,cvEncodeImage(checkstring(L,1),checkCvArr(L,2),params));
++	return 1;
++}
++
+ static int luacv_cvDecodeImage(lua_State *L)
+ {
+   const char f_msg[]=IPLIMAGE_NAME" DecodeImage("CVMAT_NAME" buf, int iscolor=CV_LOAD_IMAGE_COLOR)";
+@@ -656,7 +685,7 @@
+ 	funcReg(NamedWindow),       funcReg(ShowImage),         funcReg(MoveWindow),
+ 	funcReg(DestroyWindow),     funcReg(DestroyAllWindows), funcReg(GetWindowHandle),
+ 	funcReg(GetTrackbarPos),    funcReg(SetTrackbarPos),    funcReg(LoadImage),
+-	funcReg(LoadImageM),        funcReg(SaveImage),         funcReg(DecodeImage),
++  funcReg(LoadImageM),        funcReg(SaveImage),         funcReg(DecodeImage), funcReg(EncodeImage), 
+ 	funcReg(DecodeImageM),      funcReg(ConvertImage),      funcReg(WaitKey),
+ 	funcReg(CreateFileCapture), funcReg(CreateCameraCapture),funcReg(GrabFrame),
+ 	funcReg(RetrieveFrame),     funcReg(QueryFrame),        funcReg(ReleaseCapture),
+Index: src/lua_core.cpp
+===================================================================
+--- src/lua_core.cpp	(revision 62)
++++ src/lua_core.cpp	(working copy)
+@@ -736,8 +736,17 @@
+  return 0;
+ }
+ 
++static int luacv_cvMatToDataString(lua_State *L)
++{
++  const char f_msg[]="MatToDataString("CVMAT_NAME" mat)";
++  if (lua_gettop(L)!=1) luaL_error(L,f_msg);
++  CvMat* mat = checkCvMat(L,1);
++  lua_pushlstring(L,(const char*)mat->data.ptr,mat->height*mat->width);
++  return 1;
++}
+ 
+ 
++
+ static int luacv_cvDecRefData(lua_State *L)
+ {//pozor
+   const char f_msg[]="DecRefData("CVARR_NAME" arr)";
+@@ -4360,7 +4369,7 @@
+   funcReg(ReleaseImageHeader),  funcReg(CreateImage),       funcReg(CloneImage),
+   funcReg(SetImageCOI),         funcReg(GetImageCOI),       funcReg(SetImageROI),
+   funcReg(ResetImageROI),       funcReg(GetImageROI),       funcReg(CreateMatHeader),
+-  funcReg(InitMatHeader),       funcReg(CreateMat),         funcReg(ReleaseMat),
++  funcReg(InitMatHeader),       funcReg(CreateMat),         funcReg(ReleaseMat), funcReg(MatToDataString),
+   funcReg(DecRefData),          funcReg(IncRefData),        funcReg(CloneMat),
+   funcReg(GetSubRect),          funcReg(GetRows),           funcReg(GraphRemoveEdge),     
+   funcReg(GetRow),              funcReg(GetCols),           funcReg(GetCol),
