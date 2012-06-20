@@ -18,7 +18,6 @@ The wappcam server requires:
  - cmake
 
 ## Standard package installation with apt
-
 ```shell
 $ sudo apt-get install subversion luarocks libopencv-*-dev cmake
 $ sudo luarocks install orbit
@@ -53,6 +52,12 @@ $ make
 $ sudo cp luacv.so.0.2.0 /usr/local/lib/lua/5.1/luacv.so
 ```
 
+# Running the server
+Starts the wappcam webserver, listening on port 8080
+```shell
+orbit wappcam.lua
+```
+Connect with a browser on, e.g. http://localhost:8080
 
 
 
