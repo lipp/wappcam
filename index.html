@@ -11,7 +11,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <style>
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      padding-top: 0px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -22,101 +22,114 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-  
-  <div id="sidebar" class="span3">
-	 <div class="row">
-	    <h2 class="span3">Record</h2>
-	  </div>
-	  <div class="row">
-            <button id="single" class="span1 btn btn-small btn-primary">Single</i></button>
-	    <button id="sequence" class="span1 btn btn-small btn-primary" data-toggle="button">Sequence</button>		
-	  </div>
+    <nav class="navbar">
+      <h1>WAPPCAM</h1>
+    </nav>
+    <div class="bg">
+      <div class="container">
+        <div class="row">
+
+          <div id="sidebar" class="span3">
+            <div class="row">
+              <h2 class="span3">Record</h2>
+            </div>
+            <div class="row">
+              <button id="single" class="span1 btn btn-small btn-primary">Single</button>
+              <button id="Live" class="span1 btn btn-small btn-primary" data-toggle="button">Live</button>
+            </div>
 
 
-	<div class="row">
-	<div class="caption">
-	<p>
-	<div class="tabbable span3" > 
-	  <ul class="nav nav-tabs" >
-	    <li class="active"><a href="#tab1" data-toggle="tab">Settings</a></li>
-	    <li><a href="#tab2" data-toggle="tab">Features</a></li>
-	  </ul>
-	  <div class="tab-content" id="settingpanel">
-	    <div class="tab-pane active" id="tab1">
+            <div class="row">
+              <div class="caption">
+                <p>
+                  <div class="tabbable span3" >
+                    <ul class="nav nav-tabs" >
+                      <li class="active"><a href="#tab1" data-toggle="tab">Settings</a></li>
+                      <li><a href="#tab2" data-toggle="tab">Features</a></li>
+                    </ul>
+                    <div class="tab-content" id="settingpanel">
+                      <div class="tab-pane active" id="tab1">
 
 
-        <div id="SettingPanel">
-          <form>
-            <label>Gain</label>
-            <div id="gainslider" class="sliderbar"></div>
-            <label>Shutter</label>
-            <div id="shutterslider" class="sliderbar"></div>      
-            <label>Brigthness</label>
-            <div id="brightnessslider" class="sliderbar"></div>
-            <label>Contrast</label>
-            <div id="contrastslider" class="sliderbar"></div>
-            <label>Saturation</label>
-            <div id="saturationslider" class="sliderbar"></div>  
-	      <label class="control-label" for="select01">format list</label>
-	      <div class="controls">
-		<select id="format"><option>jpg</option>
-				    <option>png</option>
-				    <option>tiff</option>
-				    <option>bmp</option>
-	      </select>
-	      </div>
-          </form>
-	 </div>
-	 </div>
-	    <div class="tab-pane" id="tab2">
-	      <p>Howdy, I'm in Section 2.</p>
-	    </div>
-	</div>
+                        <div id="SettingPanel">
+                          <form>
+                            <label>Gain</label>
+                            <div id="gainslider" class="sliderbar"></div>
+                            <label>Shutter</label>
+                            <div id="shutterslider" class="sliderbar"></div>
+                            <label>Brigthness</label>
+                            <div id="brightnessslider" class="sliderbar"></div>
+                            <label>Contrast</label>
+                            <div id="contrastslider" class="sliderbar"></div>
+                            <label>Saturation</label>
+                            <div id="saturationslider" class="sliderbar"></div>
+                            <label class="control-label" for="select01">Format List</label>
+                            <div class="controls">
+                              <select id="format"><option>jpg</option>
+                                <option>png</option>
+                                <option>tiff</option>
+                                <option>bmp</option>
+                              </select>
+                            </div>
+                            <button id="reset" class="span1 btn btn-small btn-primary">Reset</button>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="tab2">
+                        <div id="SettingPanel">
+                          <form>
+                            <a name="fb_share"></a>
+                            <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share"
+                                    type="text/javascript">
+                            </script>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+</p>
 </div>
-</div>
-      </p>
-	</div>
 
-        </div>   <!-- /settingsPane -->         
-        <div id="cameraPane" class="span9">
-          <div class="row">
-            <img id="cameraImage" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span9"></img>            
-          </div>
-	
-        </div> <!-- /cameraPane -->    
+</div>   <!-- /settingsPane -->
+<div id="cameraPane" class="span9">
+  <div class="row">
+    <img id="liveImage" src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+         class="span9"></img>
+  </div>
+
+</div> <!-- /cameraPane -->
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="row">
+      <div class="caption">
+        <p id="imageHistory">
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+          <img src="http://www.kulturzeitraeume.de/images/platzhalter.png"
+               class="span2"></img>
+        </p>
       </div>
-      <div class="row">
-        <div id="imageHistory" class="span12">
-          <div class="row">
-	  <div class="caption">
-	  <p>
-            <img id="cameraImage1" src=""
-                 class="span2"></img>
-            <img id="cameraImage2" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span2"></img>
-            <img id="cameraImage3" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span2"></img>
-            <img id="cameraImage4" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span2"></img>
-            <img id="cameraImage5" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span2"></img>
-            <img id="cameraImage6" src="http://i01.i.aliimg.com/photo/v0/213379819/4_3_4_Gallon_Paint_Can.jpg"
-                 class="span2"></img>
-	      </p>
-	    </div>
-          </div>
-        </div> <!-- /imageHistory -->    
-      </div>
-    </div> <!-- /container -->
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.nouislider.js"></script>
-    <script src="js/wappcam.js"></script>
-  </body>
+    </div>
+  </div> <!-- /imageHistory -->
+</div>
+</div> <!-- /container -->
+</div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.nouislider.js"></script>
+<script src="js/wappcam.js"></script>
+</body>
 </html>

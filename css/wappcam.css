@@ -1,4 +1,35 @@
 #settingpanel{
 overflow: visible;  /* kein überlauf der slider */
 
-} 
+}
+
+nav.navbar {
+text-align: center;
+padding-top: 50px;
+padding-bottom: 50px;
+margin-bottom: 0;
+background-attachment: fixed;
+background-color: darkgrey;
+/*background-position: center center;*/
+}
+nav h1 {
+color: white;
+font-size: 40px;
+font-family: Verdana;
+}
+
+div.bg {
+background-image: linear-gradient(bottom, rgb(255,255,255) 15%, rgb(171,171,171) 100%);
+background-image: -o-linear-gradient(bottom, rgb(255,255,255) 15%, rgb(171,171,171) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 15%, rgb(171,171,171) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 15%, rgb(171,171,171) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 15%, rgb(171,171,171) 100%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.15, rgb(255,255,255)),
+	color-stop(1, rgb(171,171,171))
+);
+}
