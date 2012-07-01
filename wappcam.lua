@@ -18,10 +18,10 @@ local cam
 if cv_load_ok then
    -- if camera is available, its signal is returned
    cam = cv.CreateCameraCapture(-1)
-   -- width properties
-   cv.SetCaptureProperty(cam,cv.CV_CAP_PROP_FRAME_WIDTH, 640)
-   -- height properties
-   cv.SetCaptureProperty(cam,cv.CV_CAP_PROP_FRAME_HEIGHT, 480)
+   -- width properties, valid values e.g.: 640, 320
+   cv.SetCaptureProperty(cam,cv.CV_CAP_PROP_FRAME_WIDTH, 320)
+   -- height properties, valid values e.g.: 480, 240
+   cv.SetCaptureProperty(cam,cv.CV_CAP_PROP_FRAME_HEIGHT, 240)
    print(cam)
 end
 
